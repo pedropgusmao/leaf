@@ -46,7 +46,7 @@ function run_minibatch() {
 	minibatch_percentage="$2"
 
 	pushd models/
-		time python main.py -dataset 'femnist' -model 'cnn' --minibatch ${minibatch_percentage} --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} -lr ${minibatch_lr}
+		time python main.py -dataset 'femnist' -model 'cnn' --minibatch ${minibatch_percentage} --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} -lr ${minibatch_lr} --root_dataset '/dataset/leaf' 
 	popd
 	move_data ${output_dir} "minibatch_c_${clients_per_round}_mb_${minibatch_percentage}"
 }

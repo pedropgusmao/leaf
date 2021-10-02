@@ -4,18 +4,18 @@ output_dir="${1:-./baseline}"
 
 split_seed="1549786796"
 sampling_seed="1549786595"
-num_rounds="2000"
+num_rounds="200"
 
 fedavg_lr="0.004"
-declare -a fedavg_vals=( "3 1"
-			 "3 100"
-			 "35 1" )
+declare -a fedavg_vals=( "3 1")
+#			 "3 100"
+#			 "35 1" )
 
 minibatch_lr="0.06"
-declare -a minibatch_vals=( "3 1"
-			    "3 0.1"
-			    "35 1" )
-
+declare -a minibatch_vals=( "3 1")
+#			    "3 0.1"
+#			    "35 1" )
+#
 ###################### Functions ###################################
 
 function move_data() {

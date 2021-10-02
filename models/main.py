@@ -21,6 +21,7 @@ from utils.model_utils import read_data
 STAT_METRICS_PATH = 'metrics/stat_metrics.csv'
 SYS_METRICS_PATH = 'metrics/sys_metrics.csv'
 
+
 def main():
 
     args = parse_args()

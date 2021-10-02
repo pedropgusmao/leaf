@@ -41,7 +41,7 @@ class Model(ABC):
         with self.graph.as_default():
             all_vars = tf.compat.v1.trainable_variables()
             for variable, value in zip(all_vars, model_params):
-                variable.assign(value, self.sess)
+                variable.load(value, self.sess)
 
     def get_params(self):
         with self.graph.as_default():

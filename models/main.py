@@ -22,6 +22,10 @@ STAT_METRICS_PATH = 'metrics/stat_metrics.csv'
 SYS_METRICS_PATH = 'metrics/sys_metrics.csv'
 
 
+
+tf.compat.v1.disable_eager_execution()
+
+
 def main():
 
     args = parse_args()
@@ -135,7 +139,7 @@ def get_stat_writer_function(ids, groups, num_samples, args):
 
     def writer_fn(num_round, metrics, partition):
         metrics_writer.print_metrics(
-            num_round, ids, metrics, groups, num_samples, partition, args.metrics_dir, '{}_{}'.format(args.metrics_name, 'stat'))
+            num_round, ids, metrics, groups, num_samples, partition, args.metrics_dir, '{}_{}'.format('stat', args.metrics_name))
 
     return writer_fn
 
@@ -144,7 +148,7 @@ def get_sys_writer_function(args):
 
     def writer_fn(num_round, ids, metrics, groups, num_samples):
         metrics_writer.print_metrics(
-            num_round, ids, metrics, groups, num_samples, 'train', args.metrics_dir, '{}_{}'.format(args.metrics_name, 'sys'))
+            num_round, ids, metrics, groups, num_samples, 'train', args.metrics_dir, '{}_{}'.format('sys', args.metrics_name))
 
     return writer_fn
 

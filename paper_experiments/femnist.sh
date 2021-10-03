@@ -13,7 +13,11 @@ declare -a fedavg_vals=( "3 1"
 
 minibatch_lr="0.06"
 declare -a minibatch_vals=( "3 1" 
+<<<<<<< HEAD
 			    "3 0.1" 
+=======
+			    "3 0.1"
+>>>>>>> d0db12e7474ec7cf7b5dc670e2863aca9a943142
 			    "35 1" )
 
 ###################### Functions ###################################

@@ -7,13 +7,13 @@ sampling_seed="1549786595"
 num_rounds="2000"
 
 fedavg_lr="0.004"
-declare -a fedavg_vals=( "3 1")
+declare -a fedavg_vals=( "3 1" 
 			 "3 100"
 			 "35 1" )
 
 minibatch_lr="0.06"
-declare -a minibatch_vals=( "3 1")
-			    "3 0.1"
+declare -a minibatch_vals=( "3 1" 
+			    "3 0.1" 
 			    "35 1" )
 
 ###################### Functions ###################################
@@ -36,7 +36,7 @@ function run_fedavg() {
 	num_epochs="$2"
 
 	pushd models/
-		time python main.py -dataset 'femnist' -model 'cnn' --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} --num-epochs ${num_epochs} -lr ${fedavg_lr} --root_dataset '/dataset/leaf'
+		time python main.py -dataset 'femnist' -model 'cnn' --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} --num-epochs ${num_epochs} -lr ${fedavg_lr} --root_dataset '/datasets/leaf'
 	popd
 	move_data ${output_dir} "fedavg_c_${clients_per_round}_e_${num_epochs}"
 }
@@ -46,7 +46,7 @@ function run_minibatch() {
 	minibatch_percentage="$2"
 
 	pushd models/
-		time python main.py -dataset 'femnist' -model 'cnn' --minibatch ${minibatch_percentage} --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} -lr ${minibatch_lr} --root_dataset '/dataset/leaf' 
+		time python main.py -dataset 'femnist' -model 'cnn' --minibatch ${minibatch_percentage} --num-rounds ${num_rounds} --clients-per-round ${clients_per_round} -lr ${minibatch_lr} --root_dataset '/datasets/leaf'
 	popd
 	move_data ${output_dir} "minibatch_c_${clients_per_round}_mb_${minibatch_percentage}"
 }
